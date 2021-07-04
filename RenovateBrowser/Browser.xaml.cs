@@ -28,17 +28,31 @@ namespace RenovateBrowser
         {
             InitializeComponent();
             checkifsignedin();
+
             browser.LifeSpanHandler = new MyCustomLifeSpanHandler(); // Handle new tabs
-            browser.LoadingStateChanged += ChromeView_NavStateChanged; // Handle loading events
-            browser.DisplayHandler = new DisplayHandler(); // Handle new tabs
-            browser2.LifeSpanHandler = new MyCustomLifeSpanHandler(); // Handle new tabs
-            browser2.LoadingStateChanged += ChromeView_NavStateChanged2; // Handle loading events
-            browser3.LifeSpanHandler = new MyCustomLifeSpanHandler(); // Handle new tabs
-            browser3.LoadingStateChanged += ChromeView_NavStateChanged3; // Handle loading events
-            browser4.LifeSpanHandler = new MyCustomLifeSpanHandler(); // Handle new tabs
-            browser4.LoadingStateChanged += ChromeView_NavStateChanged4; // Handle loading events
-            browser5.LifeSpanHandler = new MyCustomLifeSpanHandler(); // Handle new tabs
-            browser5.LoadingStateChanged += ChromeView_NavStateChanged5; // Handle loading events
+            browser.LoadingStateChanged += ChromeView_NavStateChanged; // Navigation state handling
+            browser.DisplayHandler = new DisplayHandler(); // Display state handler, used for browser state changes
+            browser.DownloadHandler = new DownloadHandler(); // Handler for downloading files
+
+            browser2.LifeSpanHandler = new MyCustomLifeSpanHandler(); 
+            browser2.LoadingStateChanged += ChromeView_NavStateChanged2; 
+            browser2.DisplayHandler = new DisplayHandler(); 
+            browser2.DownloadHandler = new DownloadHandler();
+
+            browser3.LifeSpanHandler = new MyCustomLifeSpanHandler();
+            browser3.LoadingStateChanged += ChromeView_NavStateChanged3;
+            browser3.DisplayHandler = new DisplayHandler();
+            browser3.DownloadHandler = new DownloadHandler();
+
+            browser4.LifeSpanHandler = new MyCustomLifeSpanHandler();
+            browser4.LoadingStateChanged += ChromeView_NavStateChanged4;
+            browser4.DisplayHandler = new DisplayHandler();
+            browser4.DownloadHandler = new DownloadHandler();
+
+            browser5.LifeSpanHandler = new MyCustomLifeSpanHandler();
+            browser5.LoadingStateChanged += ChromeView_NavStateChanged5;
+            browser5.DisplayHandler = new DisplayHandler();
+            browser5.DownloadHandler = new DownloadHandler();
         }
 
         void checkifsignedin ()
@@ -251,20 +265,27 @@ namespace RenovateBrowser
             {
                 favicon.Source = new BitmapImage(new Uri(url + "favicon.ico"));
 
-                if (favicon.Source == null)
+                if (browser.Address.Contains("youtube"))
                 {
-                    favicon.Source = new BitmapImage(new Uri(url + "favicon.png"));
-                    if (favicon.Source == null)
-                    {
-                        favicon.Source = new BitmapImage(new Uri("https://renovatesoftware.com:140/images/logo.png"));
-                    }
+                    favicon.Source = new BitmapImage(new Uri("https://www.youtube.com/favicon.ico"));
+                }
+                if (browser.Address.Contains("google"))
+                {
+                    favicon.Source = new BitmapImage(new Uri("https://google.com/favicon.ico"));
+                }
+                if (browser.Address.Contains("renovatesoftware"))
+                {
+                    favicon.Source = new BitmapImage(new Uri("https://renovatesoftware.com:140/images/logo.png"));
+                }
+                if (browser.Address.Contains("twitch"))
+                {
+                    favicon.Source = new BitmapImage(new Uri("https://www.twitch.tv/favicon.ico"));
                 }
             }
             catch
             {
 
-            }
-            
+            }           
         }
 
         private void account_Click(object sender, RoutedEventArgs e)

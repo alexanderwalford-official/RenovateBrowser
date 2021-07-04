@@ -428,7 +428,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <GroupBox Visibility="Hidden" BorderThickness="0" x:Name="account_win" MouseLeave="sec_bg_MouseLeave" Margin="810,54,375,431" Padding="10" Background="#F9F9F9F9" BorderBrush="{x:Null}">
+        <GroupBox Visibility="Hidden" BorderThickness="0" x:Name="account_win" MouseLeave="sec_bg_MouseLeave" Margin="810,54,375,431" Padding="10" Background="#F9FFFFFF" BorderBrush="{x:Null}">
             <StackPanel>
                 <TextBlock FontSize="20"><Run Text="Sign In With RSL"/></TextBlock>
                 <TextBlock/>
@@ -511,7 +511,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <GroupBox x:Name="signintext" BorderThickness="0" Visibility="Hidden" Margin="741,55,375,650" BorderBrush="#FFBBBBBB" Background="White">
+        <GroupBox x:Name="signintext" BorderThickness="0" Visibility="Hidden" Margin="741,55,375,650" BorderBrush="#FFBBBBBB" Background="#F9EAEAEA">
             <StackPanel>
                 <Label Content="ℹ️ Sign in and get the most out of your" HorizontalAlignment="Left" Height="26" Margin="7,10,0,0" VerticalAlignment="Top" Width="223"/>
                 <Label Content="Renovate Software account." HorizontalAlignment="Left" Height="26" Margin="7,-10,0,0" VerticalAlignment="Top" Width="223"/>

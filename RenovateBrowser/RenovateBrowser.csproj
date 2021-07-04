@@ -147,6 +147,7 @@
       <DependentUpon>Browser.xaml</DependentUpon>
     </Compile>
     <Compile Include="DisplayHandler.cs" />
+    <Compile Include="DownloadHandler.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

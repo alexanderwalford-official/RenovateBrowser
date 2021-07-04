@@ -73,7 +73,7 @@ namespace RenovateBrowser
 
         public bool OnTooltipChanged(IWebBrowser chromiumWebBrowser, ref string text)
         {
-            return false;
+            return true;
         }
 
         public void OnAddressChanged(IWebBrowser chromiumWebBrowser, AddressChangedEventArgs addressChangedArgs)
