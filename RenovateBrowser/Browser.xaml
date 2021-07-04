@@ -3,10 +3,525 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         xmlns:local="clr-namespace:RenovateBrowser"
         mc:Ignorable="d"
-        Title="Renovate Browser" Height="750.575" Width="1300" AllowsTransparency="True" WindowStyle="None">
+        MouseDown="Window_MouseDown"
+        KeyDown="Window_KeyDown"
+        MouseDoubleClick="Window_MouseDoubleClick"
+        Title="Renovate Browser" Height="768" Width="1366" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#F9292929" ResizeMode="CanResizeWithGrip" Icon="logo_dark.png">
     <Grid>
+        <Rectangle x:Name="tab5" Visibility="Hidden" Fill="#66000000" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190" Margin="761,0,0,0"/>
+        <Rectangle x:Name="bg" Fill="#FEFFFFFF" Margin="0,55,0,0"/>
+        <wpf:ChromiumWebBrowser x:Name="browser" Visibility="Visible" LoadError="browser_LoadError" AddressChanged="browser_AddressChanged" TitleChanged="browser_TitleChanged" Address="https://landing-page-sb.netlify.app/" Margin="0,55,0,0"/>
+        <Button x:Name="closebutton" Content="❌" HorizontalAlignment="Right" Height="22" Margin="0,3,3,0" VerticalAlignment="Top" Width="53" BorderBrush="#33FF0000" Foreground="Red" Background="{x:Null}" MouseLeave="closebutton_MouseLeave" MouseEnter="closebutton_MouseEnter" FontSize="14" Click="closebutton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="minbutton" Content="-" HorizontalAlignment="Right" Height="22" Margin="0,3,109,0" VerticalAlignment="Top" Width="53" BorderBrush="#33B0B0B0" Foreground="#FFB0B0B0" Background="{x:Null}" MouseEnter="minbuttonfk_MouseEnter" MouseLeave="minbuttonfk_MouseLeave" Click="Button_Click_1" FontSize="16" FontWeight="Bold">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="maxbutton" Content="⬜" HorizontalAlignment="Right" Height="22" Margin="0,3,56,0" VerticalAlignment="Top" Width="53" BorderBrush="#336A8A99" Foreground="#FF6A8A99" Background="{x:Null}" MouseLeave="maximbuttonfk_MouseLeave" MouseEnter="maximbuttonfk_MouseEnter" Click="maxbutton_Click" FontSize="14">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Rectangle Fill="#4C000000" Height="25" Margin="0,30,0,0" VerticalAlignment="Top"/>
+        <Rectangle x:Name="tab1_bg" Fill="#66000000" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190"/>
+        <Button x:Name="newtab" Content="+" HorizontalAlignment="Left" MouseEnter="newtab_MouseEnter" MouseLeave="newtab_MouseLeave" Height="22" Margin="195,4,0,0" VerticalAlignment="Top" Width="35" BorderBrush="#33B0B0B0" Foreground="#FFB0B0B0" Background="Black" Click="Button_Click_2">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="newtab4" Content="+" Visibility="Hidden" HorizontalAlignment="Left" Height="22" Margin="765,4,0,0" VerticalAlignment="Top" Width="35" BorderBrush="#33B0B0B0" Foreground="#FFB0B0B0" Click="newtab4_Click" Background="Black">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="newtab5" Content="+" Visibility="Hidden" HorizontalAlignment="Left" Height="22" Margin="956,4,0,0" VerticalAlignment="Top" Width="35" BorderBrush="#33B0B0B0" Foreground="#FFB0B0B0" Click="newtab5_Click" Background="Black">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="refresh" Content="🔄" HorizontalAlignment="Left" Height="25" Margin="427,30,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="#FFB0B0B0" Background="{x:Null}" MouseEnter="refresh_MouseEnter" MouseLeave="refresh_MouseLeave" Click="refresh_Click" FontSize="14">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBox x:Name="urlbox" HorizontalAlignment="Left" Height="25" Margin="462,30,0,0" TextWrapping="Wrap" Text="https://example.com" VerticalAlignment="Top" Width="494" BorderBrush="{x:Null}" Background="#7FFFFFFF" FontSize="16" KeyDown="urlbox_KeyDown" SelectionBrush="#FF9C9C9C"/>
+        <Button x:Name="forward" Content="↪️" HorizontalAlignment="Left" Height="25" Margin="392,30,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="#FFB0B0B0" Background="{x:Null}" MouseEnter="forward_MouseEnter" MouseLeave="forward_MouseLeave" Click="forward_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="backward" Content="↩️" HorizontalAlignment="Left" Height="25" Margin="357,30,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="#FFB0B0B0" Background="{x:Null}" MouseEnter="backward_MouseEnter" MouseLeave="backward_MouseLeave" Click="backward_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label x:Name="title" Content="Loading.. please wait." HorizontalAlignment="Left" Height="26" Margin="31,2,0,0" VerticalAlignment="Top" Width="154" Foreground="White" FontFamily="Segoe UI Light"/>
+        <Button x:Name="account" Content="👤" MouseEnter="account_MouseEnter" MouseLeave="account_MouseLeave" HorizontalAlignment="Left" Height="25" Margin="956,30,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="#FFB0B0B0" Background="{x:Null}" Click="account_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Rectangle x:Name="tab2" Visibility="Hidden" Fill="#66000000" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190" Margin="190,0,0,0"/>
+        <Rectangle x:Name="tab3" Visibility="Hidden" Fill="#66000000" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190" Margin="380,0,0,0"/>
+        <Rectangle x:Name="tab4" Visibility="Hidden" Fill="#66000000" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190" Margin="570,0,0,0"/>
+        <Button x:Name="newtab2" Visibility="Hidden" Content="+" HorizontalAlignment="Left" Height="22" Margin="387,4,0,0" VerticalAlignment="Top" Width="34"  BorderBrush="#33B0B0B0" Foreground="#FFB0B0B0" Background="Black" Click="newtab2_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="newtab3" Visibility="Hidden" Content="+" HorizontalAlignment="Left" Height="22" Margin="575,3,0,0" VerticalAlignment="Top" Width="34"  BorderBrush="#33B0B0B0" Foreground="#FFB0B0B0" Background="Black" Click="newtab3_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <wpf:ChromiumWebBrowser x:Name="browser2" Visibility="Hidden" LoadError="browser2_LoadError" AddressChanged="browser2_AddressChanged" TitleChanged="browser2_TitleChanged" Address="https://landing-page-sb.netlify.app/" Margin="0,55,0,0"/>
+        <wpf:ChromiumWebBrowser x:Name="browser3" Visibility="Hidden" LoadError="browser3_LoadError" TitleChanged="browser3_TitleChanged" Address="https://landing-page-sb.netlify.app/" Margin="0,55,0,0"/>
+        <wpf:ChromiumWebBrowser x:Name="browser4" Visibility="Hidden" LoadError="browser4_LoadError" TitleChanged="browser4_TitleChanged" Address="https://landing-page-sb.netlify.app/" Margin="0,55,0,0"/>
+        <wpf:ChromiumWebBrowser x:Name="browser5" Visibility="Hidden" LoadError="browser5_LoadError" TitleChanged="browser5_TitleChanged" Address="https://landing-page-sb.netlify.app/" Margin="0,55,0,0"/>
+        <Button x:Name="home" MouseEnter="home_MouseEnter" MouseLeave="home_MouseLeave" Content="🏠" HorizontalAlignment="Left" Height="25" Margin="990,29,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="#FFB0B0B0" Background="{x:Null}" Click="home_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="settings" MouseEnter="settings_MouseEnter" MouseLeave="settings_MouseLeave" Content="⚙️" HorizontalAlignment="Left" Height="25" Margin="1024,30,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Foreground="#FFB0B0B0" Background="{x:Null}" Click="settings_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label x:Name="title2" Visibility="Hidden" Content="Website Title - Homepage" HorizontalAlignment="Left" Height="26" Margin="223,3,0,0" VerticalAlignment="Top" Width="142" Foreground="White" FontFamily="Segoe UI Light"/>
+        <Label x:Name="title3" Visibility="Hidden" Content="Website Title - Homepage" HorizontalAlignment="Left" Height="26" Margin="411,2,0,0" VerticalAlignment="Top" Width="142" Foreground="White" FontFamily="Segoe UI Light"/>
+        <Label x:Name="title4" Visibility="Hidden" Content="Website Title - Homepage" HorizontalAlignment="Left" Height="26" Margin="602,2,0,0" VerticalAlignment="Top" Width="142" Foreground="White" FontFamily="Segoe UI Light"/>
+        <Label x:Name="title5" Visibility="Hidden" Content="Website Title - Homepage" HorizontalAlignment="Left" Height="26" Margin="790,3,0,0" VerticalAlignment="Top" Width="142" Foreground="White" FontFamily="Segoe UI Light"/>
+        <Button x:Name="tab2_btn" Content="⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜" Visibility="Hidden" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="tab2_btn_Click" Margin="191,0,0,0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="tab3_btn" Content="⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜" Visibility="Hidden" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="tab3_btn_Click" Margin="381,0,0,0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="tab4_btn" Content="⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜" Visibility="Hidden" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="tab4_btn_Click" Margin="570,0,0,0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="tab5_btn" Content="⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜" Visibility="Hidden" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="tab5_btn_Click" Margin="761,0,0,0">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="tab1_btn" Content="⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜" HorizontalAlignment="Left" MouseDoubleClick="tab1_btn_Click" MouseDown="tab1_btn_Click" Height="29" VerticalAlignment="Top" Width="190" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="tab1_btn_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <GroupBox Visibility="Hidden" BorderThickness="0" x:Name="account_win" MouseLeave="sec_bg_MouseLeave" Margin="810,54,375,431" Padding="10" Background="#F9F9F9F9" BorderBrush="{x:Null}">
+            <StackPanel>
+                <TextBlock FontSize="20"><Run Text="Sign In With RSL"/></TextBlock>
+                <TextBlock/>
+                <TextBlock><Run Text="Username"/></TextBlock>
+                <TextBox x:Name="usernamebox" Text=""/>
+                <TextBlock/>
+                <TextBlock><Run Text="Password"/></TextBlock>
+                <PasswordBox x:Name="passwordbox"/>
+                <Button Margin="84,20,0,20" Content="Login" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click_3" Height="26" Background="#FF1D1D1D">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Gray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <TextBlock x:Name="responsetext" Height="65"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox x:Name="settingswin" BorderThickness="0" Margin="10,60,10,10" Visibility="Hidden" Background="#F9292929" BorderBrush="{x:Null}">
+            <StackPanel>
+                <TextBlock Padding="20" Foreground="White" FontSize="24" FontFamily="Segoe UI Light"><Run Text="⚙️ Settings"/></TextBlock>
+                <TextBlock/>
+                <TextBlock/>
+                <Button Margin="1186,20,0,20" Content="Save" BorderBrush="{x:Null}" Foreground="White" Height="26" Background="#FF1D1D1D" Click="Button_Click_4">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="Gray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
+            </StackPanel>
+        </GroupBox>
+        <Button x:Name="closetab" Content="❌" MouseEnter="closetab_MouseEnter" MouseLeave="closetab_MouseLeave" Visibility="Hidden" HorizontalAlignment="Left" Height="24" Margin="322,30,0,0" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#7FFFFFFF" FontSize="11" Click="closetab_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <GroupBox x:Name="signintext" BorderThickness="0" Visibility="Hidden" Margin="741,55,375,650" BorderBrush="#FFBBBBBB" Background="White">
+            <StackPanel>
+                <Label Content="ℹ️ Sign in and get the most out of your" HorizontalAlignment="Left" Height="26" Margin="7,10,0,0" VerticalAlignment="Top" Width="223"/>
+                <Label Content="Renovate Software account." HorizontalAlignment="Left" Height="26" Margin="7,-10,0,0" VerticalAlignment="Top" Width="223"/>
+            </StackPanel>
+        </GroupBox>
+        <Image x:Name="favicon" HorizontalAlignment="Left" Height="20" Margin="6,6,0,0" VerticalAlignment="Top" Width="20" Source="logo_dark.png" Stretch="UniformToFill"/>
+        <Image x:Name="favicon2" HorizontalAlignment="Left" Height="20" Visibility="Hidden" Margin="198,6,0,0" VerticalAlignment="Top" Width="20" Source="logo_dark.png" Stretch="UniformToFill"/>
+        <Image x:Name="favicon3" HorizontalAlignment="Left" Height="20" Visibility="Hidden" Margin="386,5,0,0" VerticalAlignment="Top" Width="20" Source="logo_dark.png" Stretch="UniformToFill"/>
+        <Image x:Name="favicon4" HorizontalAlignment="Left" Height="20" Visibility="Hidden" Margin="577,5,0,0" VerticalAlignment="Top" Width="20" Source="logo_dark.png" Stretch="UniformToFill"/>
+        <Image x:Name="favicon5" HorizontalAlignment="Left" Height="20" Visibility="Hidden" Margin="765,6,0,0" VerticalAlignment="Top" Width="20" Source="logo_dark.png" Stretch="UniformToFill"/>
+        <Rectangle x:Name="sidebar" Fill="#F2000000" Opacity="0" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" HorizontalAlignment="Left" Width="43" Margin="0,55,0,0"/>
     </Grid>
 </Window>

@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RenovateBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Welcome!" Height="350" Width="332" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="{x:Null}" Topmost="True" Icon="logo_dark.png" ShowInTaskbar="False">
     <Grid>
-        
+        <Rectangle Fill="#FF292929" HorizontalAlignment="Left" Height="330" Margin="10,10,0,0" VerticalAlignment="Top" Width="312" Stroke="#CCFFFFFF"/>
+        <Image HorizontalAlignment="Left" Height="145" Margin="84,57,0,0" VerticalAlignment="Top" Width="158" Source="logo_dark.png" Stretch="UniformToFill"/>
+        <Label Content="Renovate Browser" HorizontalAlignment="Left" Height="41" Margin="71,207,0,0" VerticalAlignment="Top" Width="194" Foreground="White" FontSize="24" FontFamily="Segoe UI Light"/>
+        <Label x:Name="vertext" Content="Version 0.0.0.0" HorizontalAlignment="Left" Height="26" Margin="120,243,0,0" VerticalAlignment="Top" Width="104" Foreground="White" FontFamily="Segoe UI Light"/>
+
     </Grid>
 </Window>
