@@ -121,7 +121,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="newtab5" Content="+" Visibility="Hidden" HorizontalAlignment="Left" Height="22" Margin="956,4,0,0" VerticalAlignment="Top" Width="35" BorderBrush="#33B0B0B0" Foreground="#FFB0B0B0" Click="newtab5_Click" Background="Black">
+        <Button x:Name="newtab5" Content="..." Visibility="Hidden" HorizontalAlignment="Left" Height="22" Margin="956,4,0,0" VerticalAlignment="Top" Width="35" BorderBrush="#33B0B0B0" Foreground="#FFB0B0B0" Click="newtab5_Click" Background="Black">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Foreground" Value="Gray"/>

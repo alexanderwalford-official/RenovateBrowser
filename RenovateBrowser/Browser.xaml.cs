@@ -30,6 +30,7 @@ namespace RenovateBrowser
             checkifsignedin();
             browser.LifeSpanHandler = new MyCustomLifeSpanHandler(); // Handle new tabs
             browser.LoadingStateChanged += ChromeView_NavStateChanged; // Handle loading events
+            browser.DisplayHandler = new DisplayHandler(); // Handle new tabs
             browser2.LifeSpanHandler = new MyCustomLifeSpanHandler(); // Handle new tabs
             browser2.LoadingStateChanged += ChromeView_NavStateChanged2; // Handle loading events
             browser3.LifeSpanHandler = new MyCustomLifeSpanHandler(); // Handle new tabs
